@@ -7,5 +7,8 @@ The pipeline contains two subpipelines first one to create the SDF from PubChem 
 # Input 
 A CSV file with the headers "GLYTOUCAN_ACC,PUBCHEM_CID" and please make sure input CID from pubchem should be just numbers as "70678538" not as "CID70678538". These two are requirements for the pipeline, hopefully if the pipeline doesnt run these two should be the main culprits rest shouldn't be an issue.
 
+# Dependencies 
+A Json jar is used (Node 70) to parse the response from PubChem. A mapping file is used (Node 26 XLS Reader) to convert between ChEBI and ClassyFire classifications.   
+
 # Warning 
 After Classification of entries, please check whether all the entries are classfied, in some cases ClassyFire fails to classify the entries resulting in missing entries after classification. 
