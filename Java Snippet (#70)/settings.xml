@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config xmlns="http://www.knime.org/2008/09/XMLConfig" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.knime.org/2008/09/XMLConfig http://www.knime.org/XMLConfig_2008_09.xsd" key="settings.xml">
+<entry key="node_file" type="xstring" value="settings.xml"/>
+<config key="flow_stack"/>
+<config key="internal_node_subsettings">
+<entry key="memory_policy" type="xstring" value="CacheSmallInMemory"/>
+</config>
+<config key="model">
+<entry key="scriptImports" type="xstring" value="// Your custom imports:%%00010import org.json.JSONObject;%%00010import org.json.JSONArray;%%00010import java.util.List;%%00010import java.util.ArrayList;%%00010import java.util.stream.Collectors;%%00010"/>
+<entry key="scriptFields" type="xstring" value="// Your custom variables:%%00010"/>
+<entry key="scriptBody" type="xstring" value="// Enter your code here:%%00010%%00010%%00010List&lt;String&gt; content = new ArrayList(); %%00010%%00010JSONObject xt = new JSONObject(c_Usersvenkatknimeworkspace.toString());%%00010JSONArray a = ((JSONArray) ((JSONObject) xt.get(&quot;Record&quot;)).get(&quot;Section&quot;));%%00010for (int j = 0; j &lt; a.length(); j++) {%%00010%%00009JSONObject o = ((JSONObject)a.get(j));%%00010%%00009if(o.get(&quot;TOCHeading&quot;).toString().equals(&quot;Biologic Description&quot;)){%%00010%%00009%%00009JSONArray b = ((JSONArray)o.get(&quot;Section&quot;));%%00010%%00009%%00009for (int jk = 0; jk &lt; b.length(); jk++) {%%00010%%00009%%00009%%00009JSONObject o1 = ((JSONObject)b.get(jk));%%00010%%00009%%00009%%00009if(o1.get(&quot;TOCHeading&quot;).toString().equals(&quot;Biologic Line Notation&quot;)){%%00010%%00009%%00009%%00009%%00009JSONArray b1 = ((JSONArray)o1.get(&quot;Information&quot;));%%00010%%00009%%00009%%00009%%00009for(int jkl = 0; jkl &lt; b1.length(); jkl++) {%%00010%%00009%%00009%%00009%%00009%%00009JSONObject o2 = (JSONObject) b1.get(jkl);%%00010%%00009%%00009%%00009%%00009%%00009if(o2.get(&quot;Name&quot;).toString().contains(&quot;IUPAC&quot;)){%%00010%%00009%%00009%%00009%%00009%%00009content.add( ((JSONObject)((JSONArray)((JSONObject)o2.get(&quot;Value&quot;)).get%%00010%%00009%%00009%%00009%%00009%%00009%%00009%%00009%%00009%%00009%%00009(&quot;StringWithMarkup&quot;)).get(0)).get(&quot;String&quot;).toString());%%00009%%00009%%00010%%00009%%00009%%00009%%00009%%00009}%%00010%%00009%%00009%%00009%%00009}%%00010%%00009%%00009%%00009}%%00010%%00009%%00009}%%00009%%00009%%00010%%00009}%%00010}%%00009%%00010%%00010out_SYN = content.stream().collect(Collectors.joining(&quot;; &quot;));"/>
+<config key="jarFiles">
+<entry key="array-size" type="xint" value="1"/>
+<entry key="0" type="xstring" value="/Users/venkat/Desktop/json-20151123.jar"/>
+</config>
+<config key="outCols">
+<entry key="array-size" type="xint" value="1"/>
+<config key="0">
+<entry key="Name" type="xstring" value="SYN"/>
+<entry key="JavaName" type="xstring" value="out_SYN"/>
+<entry key="JavaType" type="xstring" value="java.lang.String"/>
+<config key="Type">
+<entry key="cell_class" type="xstring" value="org.knime.core.data.def.StringCell"/>
+<entry key="is_null" type="xboolean" value="false"/>
+</config>
+<entry key="ConverterFactory" type="xstring" value="org.knime.core.data.def.StringCell$StringCellFactory.createCell(class java.lang.String)"/>
+<entry key="replaceExisting" type="xboolean" value="false"/>
+</config>
+</config>
+<config key="outVars">
+<entry key="array-size" type="xint" value="0"/>
+</config>
+<config key="inCols">
+<entry key="array-size" type="xint" value="1"/>
+<config key="0">
+<entry key="Name" type="xstring" value="/Users/venkat/knime-workspace"/>
+<entry key="JavaName" type="xstring" value="c_Usersvenkatknimeworkspace"/>
+<entry key="JavaType" type="xstring" value="javax.json.JsonValue"/>
+<entry key="JavaTypeProviderBundle" type="xstring" value="org.glassfish.javax.json"/>
+<config key="Type">
+<entry key="cell_class" type="xstring" value="org.knime.core.data.json.JSONCell"/>
+<entry key="is_null" type="xboolean" value="false"/>
+</config>
+<entry key="ConverterFactory" type="xstring" value="org.knime.core.data.convert.java.SimpleDataCellToJavaConverterFactory(JSONValue,interface javax.json.JsonValue,JsonValue)"/>
+</config>
+</config>
+<config key="inVars">
+<entry key="array-size" type="xint" value="0"/>
+</config>
+<entry key="version" type="xstring" value="version 1.x"/>
+<entry key="templateUUID" type="xstring" isnull="true" value=""/>
+<entry key="runOnExecute" type="xboolean" value="false"/>
+<config key="bundles">
+<entry key="array-size" type="xint" value="0"/>
+</config>
+</config>
+<entry key="customDescription" type="xstring" isnull="true" value=""/>
+<entry key="state" type="xstring" value="EXECUTED"/>
+<entry key="factory" type="xstring" value="org.knime.base.node.jsnippet.JavaSnippetNodeFactory"/>
+<entry key="node-name" type="xstring" value="Java Snippet"/>
+<entry key="node-bundle-name" type="xstring" value="KNIME Java Snippet Nodes"/>
+<entry key="node-bundle-symbolic-name" type="xstring" value="org.knime.jsnippets"/>
+<entry key="node-bundle-vendor" type="xstring" value="KNIME AG, Zurich, Switzerland"/>
+<entry key="node-bundle-version" type="xstring" value="4.0.0.v201908201447"/>
+<entry key="node-feature-name" type="xstring" value="KNIME Core"/>
+<entry key="node-feature-symbolic-name" type="xstring" value="org.knime.features.base.feature.group"/>
+<entry key="node-feature-vendor" type="xstring" value="KNIME AG, Zurich, Switzerland"/>
+<entry key="node-feature-version" type="xstring" value="4.0.2.v201909300912"/>
+<config key="factory_settings"/>
+<entry key="name" type="xstring" value="Java Snippet"/>
+<entry key="hasContent" type="xboolean" value="true"/>
+<entry key="isInactive" type="xboolean" value="false"/>
+<config key="ports">
+<config key="port_1">
+<entry key="index" type="xint" value="1"/>
+<entry key="port_spec_class" type="xstring" value="org.knime.core.data.DataTableSpec"/>
+<entry key="port_object_class" type="xstring" value="org.knime.core.node.BufferedDataTable"/>
+<entry key="port_object_summary" type="xstring" value="Rows: 1, Cols: 9"/>
+<entry key="port_dir_location" type="xstring" value="port_1"/>
+</config>
+</config>
+<config key="filestores">
+<entry key="file_store_location" type="xstring" isnull="true" value=""/>
+<entry key="file_store_id" type="xstring" isnull="true" value=""/>
+</config>
+</config>
